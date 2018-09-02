@@ -1,13 +1,13 @@
 import java.util.HashMap;
 
 public class Catalog {
-    private HashMap<String, Double> products;
+    private HashMap<String, Integer> products;
 
     public Catalog(){
 
     }
 
-    public void addProduct(String name, Double price){
+    public void addProduct(String name, int price){
         if(products.get(name)==null) {
             products.put(name, price);
         }else{
@@ -21,7 +21,7 @@ public class Catalog {
             System.out.println(name + " does not exist");
         }
     }
-    public void updateProduct(String name, Double price){
+    public void updateProduct(String name, int price){
         if(products.get(name)!=null){
             products.put(name,price);
         }else{
@@ -35,7 +35,7 @@ public class Catalog {
             System.out.println(name + " does not exist");
         }
     }
-    public double getProductPrice(String name){
+    public int getProductPrice(String name){
 
         if(products.get(name)!=null){
             return products.get(name);

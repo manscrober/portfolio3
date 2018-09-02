@@ -27,11 +27,26 @@ public class ShoppingBasket {
                 =Double.toString(basket.stream().map(s->catalog.getProductPrice(s))
                                                 .reduce((d1,d2)->d1>d2?d1:d2)
                                                 .get()).length();
-        String dashBarPrice=repeatSymbolNTimes('-',lengthOfLongestPrice+1);//one extra dash for the euro sign
+        //one extra dash for the euro sign, one for the ',' symbol
+        String dashBarPrice=repeatSymbolNTimes('-',lengthOfLongestPrice+2);
         System.out.println("+----"+dashBarProduct+"+"+dashBarPrice + "+");
+        //7 is the length of "Produkt", 2 extra spaces for euro and comma. 5 is the length of "Preis".
+        System.out.println("|Pos|Produkt"
+                            + repeatSymbolNTimes(' ',lengthOfLongestProductName-7)
+                            + "|Preis"+repeatSymbolNTimes(' ', lengthOfLongestPrice+2-5) + "|");
+        for(int i=1;i<=basket.size();i++){
+            //still needs to be made more compact. variables for name and price strings.
+            //still not finished
+            System.out.println("|"+repeatSymbolNTimes(' ',3-numberOfDigits(i))+"i"+"|"+basket.get(i)
+                                + repeatSymbolNTimes(' ', lengthOfLongestProductName-basket.get(i).length())
+                                + "|"
+                                +repeatSymbolNTimes(' ',lengthOfLongestPrice
+                                                                -numberOfDigits(catalog.getProductPrice(basket.get(i))))
+                                +catalog.getProductPrice(basket.get(i)));
+        }
     }
-    private int numberOfDigits(double d){
-        return Double.toString(d).length();
+    private int numberOfDigits(int i){
+        return Integer.toString(i).length();
     }
     private String repeatSymbolNTimes(Character symbol, int n){
         String string = "";
