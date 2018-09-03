@@ -4,32 +4,33 @@ public class Catalog {
     private HashMap<String, Integer> products;
 
     public Catalog(){
-
+        products=new HashMap<>();
     }
 
     public void addProduct(String name, int price){
-        if(products.get(name)==null) {
-            products.put(name, price);
-        }else{
+        if(products.containsKey(name)) {
             System.out.println(name + " already exists");
-        }
-    }
-    public void deleteProduct(String name){
-        if(products.get(name)!=null) {
-            products.remove(name);
         }else{
-            System.out.println(name + " does not exist");
+            products.put(name, price);
         }
     }
     public void updateProduct(String name, int price){
-        if(products.get(name)!=null){
+        if(products.containsKey(name)){
             products.put(name,price);
         }else{
             System.out.println(name+" does not exist");
         }
     }
+    public void deleteProduct(String name){
+        if(products.containsKey(name)) {
+            products.remove(name);
+        }else{
+            System.out.println(name + " does not exist");
+        }
+    }
+
     public void showProduct(String name){
-        if(products.get(name)!= null){
+        if(products.containsKey(name)){
             System.out.println(name+ ", Preis:" + products.get(name));
         }else{
             System.out.println(name + " does not exist");
@@ -37,13 +38,13 @@ public class Catalog {
     }
     public int getProductPrice(String name){
 
-        if(products.get(name)!=null){
+        if(products.containsKey(name)){
             return products.get(name);
         }else{
-            return 0;//unter der annahme, dass es keine kostenlosen produkte gibt.
+            return 0;//assuming there aren't any free products
         }
     }
-    public void hasProduct(){
-
+    public boolean hasProduct(String name){
+        return products.containsKey(name);
     }
 }
