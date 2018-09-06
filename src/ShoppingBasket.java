@@ -82,7 +82,7 @@ public class ShoppingBasket {
 
     private String convertCentIntToEuroString(int cents) {
 
-        String priceStringCents = Integer.toString(cents);
+        String priceStringCents = ""+cents;
         while(priceStringCents.length()<=CENT_DECIMAL_LENGTH){
             priceStringCents = "0" + priceStringCents;
         }

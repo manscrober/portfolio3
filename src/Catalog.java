@@ -40,8 +40,8 @@ public class Catalog {
 
     private String convertCentIntToEuroString(int cents) {
 
-        String priceStringCents = Integer.toString(cents);
-        while(priceStringCents.length()<=2){
+        String priceStringCents = ""+cents;
+        while(priceStringCents.length()<=CENT_DECIMAL_LENGTH){
             priceStringCents = "0" + priceStringCents;
         }
         String priceString = priceStringCents.substring(0, priceStringCents.length() - CENT_DECIMAL_LENGTH)
