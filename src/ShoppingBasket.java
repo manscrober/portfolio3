@@ -12,6 +12,7 @@ public class ShoppingBasket {
     private final int COLUMN_PRICE_LENGTH=7;
     private final int LINE_SUM_LENGTH=43;
     private final int SUM_NAME_LENGTH=7;
+    private final int BASKET_LIMIT = 1000;
     private final String SUM_NAME = "Summe: ";
 
     private Catalog catalog;
@@ -23,7 +24,11 @@ public class ShoppingBasket {
 
     public void addItem(String name){
         if(catalog.hasProduct(name)) {
-            basket.add(name);
+            if(basket.size()<BASKET_LIMIT) {
+                basket.add(name);
+            }else{
+                System.out.println("basket is full");
+            }
         }else{
             System.out.println(name + " does not exist");
         }
