@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class ShoppingBasket {
 
     public static void main(String[] args) {
-
     }
 
 
@@ -17,7 +16,6 @@ public class ShoppingBasket {
     private final int COLUMN_NAME_LENGTH = 31;
     private final int COLUMN_PRICE_LENGTH = 7;
     private final int LINE_SUM_LENGTH = 43;
-    private final int SUM_NAME_LENGTH = 7;
     private final int CENT_DECIMAL_LENGTH=2;
     private final String SUM_NAME = "Summe: ";
 
@@ -37,9 +35,10 @@ public class ShoppingBasket {
         }
     }
 
+
     public void deleteItem(int position) {
         int indexInArrayList = position - 1;
-        if (basket.get(indexInArrayList) != null) {
+        if (indexInArrayList<basket.size()&&indexInArrayList>=0) {
             basket.remove(indexInArrayList);
         } else {
             System.out.println("product not found");

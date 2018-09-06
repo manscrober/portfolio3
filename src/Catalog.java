@@ -10,7 +10,7 @@ public class Catalog {
     public void addProduct(String name, int price){
         if(products.containsKey(name)) {
             System.out.println(name + " already exists");
-        }else{
+        }else if(name!=null){ //avoids nullpointerexceptions
             products.put(name, price);
         }
     }
