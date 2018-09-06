@@ -3,6 +3,13 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class ShoppingBasket {
+
+    public static void main(String[] args) {
+    }
+
+
+
+
     private final String TABLE_HEADER =         "+-----------------------------------+-------+\n" +
                                                 "|Pos|Produkt                        |Preis  |\n" +
                                                 "+-----------------------------------+-------+";
