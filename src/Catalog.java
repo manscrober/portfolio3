@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 public class Catalog {
+    private final int CENT_DECIMAL_LENGTH=2;
     private HashMap<String, Integer> products;
     public Catalog(){
         products=new HashMap<>();
@@ -30,11 +31,25 @@ public class Catalog {
 
     public void showProduct(String name){
         if(products.containsKey(name)){
-            System.out.println(name+ ", Preis:" + products.get(name));
+            System.out.println(name+ ", Preis:" + convertCentIntToEuroString(products.get(name)));
         }else{
             System.out.println(name + " does not exist");
         }
     }
+
+
+    private String convertCentIntToEuroString(int cents) {
+
+        String priceStringCents = Integer.toString(cents);
+        while(priceStringCents.length()<=2){
+            priceStringCents = "0" + priceStringCents;
+        }
+        String priceString = priceStringCents.substring(0, priceStringCents.length() - CENT_DECIMAL_LENGTH)
+                + "," + priceStringCents.substring(priceStringCents.length() - CENT_DECIMAL_LENGTH) + "€";
+        return priceString;
+    }
+
+
     public int getProductPrice(String name){
 
         if(products.containsKey(name)){
