@@ -2,7 +2,6 @@ import java.util.HashMap;
 
 public class Catalog {
     private HashMap<String, Integer> products;
-    private final int PRICE_LIMIT=10000;
     public Catalog(){
         products=new HashMap<>();
     }
@@ -10,19 +9,13 @@ public class Catalog {
     public void addProduct(String name, int price){
         if(products.containsKey(name)) {
             System.out.println(name + " already exists");
-        }else if(price<PRICE_LIMIT){
-            products.put(name, price);
         }else{
-            System.out.println("price too high");
+            products.put(name, price);
         }
     }
     public void updateProduct(String name, int price){
         if(products.containsKey(name)){
-            if(price<PRICE_LIMIT) {
-                products.put(name, price);
-            }else{
-                System.out.println("price is too high");
-            }
+            products.put(name, price);
         }else{
             System.out.println(name+" does not exist");
         }
